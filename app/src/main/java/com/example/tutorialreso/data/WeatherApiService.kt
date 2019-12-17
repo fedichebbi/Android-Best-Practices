@@ -1,6 +1,6 @@
 package com.example.tutorialreso.data
 
-import com.example.tutorialreso.data.response.CurrentWeatherResponse
+import com.example.tutorialreso.data.network.response.CurrentWeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -23,6 +23,7 @@ interface WeatherApiService {
 
     companion object {
         operator fun invoke(): WeatherApiService{
+            // Add API_KEY to each query we make
             val reqInterceptor = Interceptor { chain ->
                 val url = chain.request()
                     .url()

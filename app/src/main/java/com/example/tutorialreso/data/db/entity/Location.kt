@@ -1,4 +1,4 @@
-package com.example.tutorialreso.data.response
+package com.example.tutorialreso.data.db.entity
 
 
 import com.google.gson.annotations.SerializedName

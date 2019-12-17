@@ -13,6 +13,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
         applicationId "com.example.tutorialreso"
         minSdkVersion 21
         targetSdkVersion 29
