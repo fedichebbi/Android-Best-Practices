@@ -1,4 +1,4 @@
-package com.example.tutorialreso.data
+package com.example.tutorialreso.data.network
 
 import com.example.tutorialreso.data.network.response.CurrentWeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -22,7 +22,9 @@ interface WeatherApiService {
     ) : Deferred<CurrentWeatherResponse>
 
     companion object {
-        operator fun invoke(): WeatherApiService{
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): WeatherApiService {
             // Add API_KEY to each query we make
             val reqInterceptor = Interceptor { chain ->
                 val url = chain.request()
@@ -38,6 +40,7 @@ interface WeatherApiService {
             }
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(reqInterceptor)
+                .addInterceptor(connectivityInterceptor)
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
