@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this ,navController)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
+    /*override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(null , navController)
-    }
+    }*/
 }
